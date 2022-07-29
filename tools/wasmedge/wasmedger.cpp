@@ -6,6 +6,7 @@
 #include "common/types.h"
 #include "common/version.h"
 #include "host/host_function_example/examplemodule.h"
+#include "host/host_function_crypto/cryptomodule.h"
 #include "host/wasi/wasimodule.h"
 #include "plugin/plugin.h"
 #include "po/argument_parser.h"
@@ -222,6 +223,9 @@ int main(int Argc, const char *Argv[]) {
   // Register your module in VM.
   WasmEdge::Host::HostFuncExampleModule ExampleMod;
   VM.registerModule(ExampleMod);
+
+  WasmEdge::Host::HostFuncCryptoModule CryptoMod;
+  VM.registerModule(CryptoMod);
 
   WasmEdge::Host::WasiModule *WasiMod =
       dynamic_cast<WasmEdge::Host::WasiModule *>(
